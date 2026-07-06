@@ -17,3 +17,4 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_KEY_TELEMETRY=y
   - board: seeeduino_xiao_ble
     shield: settings_reset
+# retrigger build after zmk-key-telemetry fix
