@@ -10,8 +10,6 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: xxxxxHCxxxx
       url-base: https://github.com/xxxxxHCxxxx
-    - name: prospector
-      url-base: https://github.com/t-ogura
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -26,9 +24,5 @@ manifest:
     - name: zmk-key-telemetry
       remote: xxxxxHCxxxx
       revision: main
-    - name: prospector-zmk-module
-      remote: prospector
-      revision: v2.2.1
-      path: modules/prospector-zmk-module
   self:
     path: config
