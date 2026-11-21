@@ -14,6 +14,8 @@
 #define FUNCTION 4
 #define SCROLL 5
 #define WIRELESS 6
+#define WINDOWS 7
+#define WIN_MARK 8
 
 //mouse cursol
 
@@ -118,6 +120,16 @@
         };
     };
 
+    // Windowsモード中にMARKレイヤーを押すと、⌘の代わりにCtrlを送るWIN_MARKに切り替わる
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        win_mark {
+            if-layers = <MARK WINDOWS>;
+            then-layer = <WIN_MARK>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -198,7 +210,7 @@
         WIRELESS {
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                         &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans        &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &trans
+&tog WINDOWS  &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &trans
 &trans        &trans        &trans        &trans        &trans                               &trans          &trans        &trans        &trans        &bt BT_CLR
 &trans        &trans        &trans        &trans        &trans        &trans    &bootloader  &studio_unlock                &trans        &trans        &bt BT_CLR_ALL
             >;
@@ -212,6 +224,17 @@
 &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans          &trans  &trans  &trans
+            >;
+        };
+
+        //8 Windowsモード中のMARK（⌘→Ctrl）
+
+        WIN_MARK {
+            bindings = <
+&trans     &trans     &trans     &trans     &trans                    &trans  &trans  &trans  &trans  &trans
+&kp LC(A)  &kp LC(S)  &trans     &kp LC(F)  &trans                    &trans  &trans  &trans  &trans  &trans
+&kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans                    &trans  &trans  &trans  &trans  &trans
+&trans     &trans     &trans     &trans     &trans  &trans    &trans  &trans          &trans  &trans  &trans
             >;
         };
     };
